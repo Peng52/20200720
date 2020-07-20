@@ -1,0 +1,47 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group = 'com.peng'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+// 阿里云云效私有仓库配置
+allprojects {
+    repositories {
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            credentials {
+                username '5f131a46004c4c8b7c80694e'
+                password '2UA]i=eNWSSx'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2017856-release-u0VBja/'
+        }
+
+        maven {
+            credentials {
+                username '5f131a46004c4c8b7c80694e'
+                password '2UA]i=eNWSSx'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2017856-snapshot-12xXNM/'
+        }
+    }
+}
+
+
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis:2.3.0.RELEASE'
+}
+
+test {
+    useJUnitPlatform()
+}
